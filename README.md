@@ -1,4 +1,4 @@
-# mdstitch
+# 🪡 mdstitch
 
 Package manager for `agent.md` and `skill.md` files.
 
