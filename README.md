@@ -14,14 +14,14 @@ npm install -g mdstitch
 
 Publish your agent or skill files to the mdstitch registry, and pull them into any project instantly.
 
-```bash
-mdstitch signup # create an account
-mdstitch login # log in
-mdstitch publish <file_name> # publish a package
-mdstitch add <package_name> # install a package into your project
-mdstitch update <file_name> # push an updated version
-mdstitch update <file_name> --name <desired_package_name> # update under a specific package name
-```
+| Command | Description |
+|---|---|
+| `mdstitch signup` | Create an account |
+| `mdstitch login` | Log in |
+| `mdstitch publish <file_name>` | Publish a package |
+| `mdstitch add <package_name>` | Install a package into your project |
+| `mdstitch update <file_name>` | Push an updated version |
+| `mdstitch update <file_name> --name <package_name>` | Update under a specific package name |
 
 ---
 
