@@ -10,7 +10,7 @@ npm install -g mdstitch
 
 ---
 
-## Package management
+### Package management
 
 Publish your agent or skill files to the mdstitch registry, and pull them into any project instantly.
 
@@ -22,14 +22,13 @@ Publish your agent or skill files to the mdstitch registry, and pull them into a
 | `mdstitch add <package_name>` | Install a package into your project |
 | `mdstitch update <file_name>` | Push an updated version |
 | `mdstitch update <file_name> --name <package_name>` | Update under a specific package name |
-
 ---
 
-## Annotations
+### Annotations
 
 Annotations let you embed live data and protect sensitive content directly in your markdown files.
 
-### `@excel(file, sheet, range)`
+#### `@excel(file, sheet, range)`
 
 Pulls a table from an Excel file and replaces the annotation with structured instructions an AI agent can use to recreate or work with the data.
 
@@ -39,7 +38,7 @@ Pulls a table from an Excel file and replaces the annotation with structured ins
 
 Expands to a markdown table with column types, calculation logic, and row data.
 
-### `@secret(start)` / `@secret(end)`
+#### `@secret(start)` / `@secret(end)`
 
 Wraps content that should be stripped before publishing. Anything between these tags is removed when you run `mdstitch publish` — keeping private context local while sharing the rest.
 
@@ -51,13 +50,13 @@ INTERNAL_API_KEY=abc123
 
 ---
 
-## File commands
+### File commands
 
-```bash
-mdstitch run agent.md        # expand all annotations in a file
-mdstitch compress agent.md   # shrink file size for token efficiency
-mdstitch pretty agent.md     # restore compressed file to readable markdown
-```
+| Command | Description |
+|---|---|
+| `mdstitch run <file_name>` | Activate all annotations in a file |
+| `mdstitch compress <file_name>` | Shrink file size for token efficiency |
+| `mdstitch pretty <file_name>` | Restore compressed file to readable markdown |
 
 ---
 
