@@ -1,15 +1,9 @@
 #!/usr/bin/env node
-require('dotenv').config();
 const { program } = require('commander');
 
 const { pretty } = require('../src/commands/pretty');
 const { compress } = require('../src/commands/compress');
 const { run } = require('../src/commands/run');
-const { login } = require('../src/commands/login');
-const { signup } = require('../src/commands/signup');
-const { publish } = require('../src/commands/publish');
-const { add } = require('../src/commands/add');
-const { update } = require('../src/commands/update');
 
 const pkg = require('../package.json');
 
@@ -49,31 +43,31 @@ program
 program
   .command('login')
   .description('Log in to mdstitch')
-  .action(() => login());
+  .action(() => require('../src/commands/login').login());
 
 program
   .command('signup')
   .description('Create a new mdstitch account')
-  .action(() => signup());
+  .action(() => require('../src/commands/signup').signup());
 
 program
   .command('publish')
   .description('Publish an md file as a package')
   .argument('<file>', 'The md file to publish')
-  .action((file) => publish(file));
+  .action((file) => require('../src/commands/publish').publish(file));
 
 program
   .command('add')
   .description('Add a package to the current folder')
   .argument('<name>', 'The package name to add')
-  .action((name) => add(name));
+  .action((name) => require('../src/commands/add').add(name));
 
 program
   .command('update')
   .description('Update a package you own')
   .argument('<file>', 'The md file to update')
   .option('-n, --name <name>', 'Package name to update (defaults to filename)')
-  .action((file, options) => update(file, options.name));
+  .action((file, options) => require('../src/commands/update').update(file, options.name));
 
 // ─── Parse ──────────────────────────────────────────────────────────────────
 
