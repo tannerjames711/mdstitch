@@ -1,8 +1,10 @@
+<div align="center">
+
 # 🪡 mdstitch
 
-Package manager for `agent.md` and `skill.md` files.
+Like npm but for `agent.md` and `skill.md` files... but also with other cool features.
 
-Share, install, and publish agent instructions the same way you share code — with a single command.
+</div>
 
 ```
 npm install -g mdstitch
