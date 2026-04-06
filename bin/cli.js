@@ -15,7 +15,7 @@ const pkg = require('../package.json');
 
 //setup
 program
-  .name('agmod')
+  .name('mdstitch')
   .description('A CLI tool for agmod')
   .version(pkg.version); // enables: betterag --version
 
@@ -72,7 +72,8 @@ program
   .command('update')
   .description('Update a package you own')
   .argument('<file>', 'The md file to update')
-  .action((file) => update(file));
+  .option('-n, --name <name>', 'Package name to update (defaults to filename)')
+  .action((file, options) => update(file, options.name));
 
 // ─── Parse ──────────────────────────────────────────────────────────────────
 
