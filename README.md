@@ -24,8 +24,7 @@ Publish your agent or skill files to the mdstitch registry, and pull them into a
 | `mdstitch add <package_name>` | Install a package into a folder — creates `<package_name>/` with `agent.md` or `skill.md` and any reference files |
 | `mdstitch addref <package_name> <file>` | Attach a plain text reference file (`.py`, `.js`, `.ts`, `.txt`, `.json`, `.csv`, etc.) to a package |
 | `mdstitch removeref <package_name> <file>` | Remove a reference file from a package |
-| `mdstitch update <file_name>` | Push an updated version |
-| `mdstitch update <file_name> --name <package_name>` | Update under a specific package name |
+| `mdstitch update <package_name> <file_name>` | Push an updated version of a package |
 
 ---
 

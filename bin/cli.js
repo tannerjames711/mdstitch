@@ -79,9 +79,9 @@ program
 program
   .command('update')
   .description('Update a package you own')
-  .argument('<file>', 'The md file to update')
-  .option('-n, --name <name>', 'Package name to update (defaults to filename)')
-  .action((file, options) => require('../src/commands/update').update(file, options.name));
+  .argument('<package_name>', 'The package name to update')
+  .argument('<file>', 'The md file to push')
+  .action((packageName, file) => require('../src/commands/update').update(packageName, file));
 
 // ─── Parse ──────────────────────────────────────────────────────────────────
 

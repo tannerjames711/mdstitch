@@ -2,7 +2,7 @@ const { supabase } = require('../../src/lib/supabase');
 const { loadSession } = require('../../src/lib/session');
 const { readPackageFile } = require('./publish_helpers');
 
-async function update(file, nameOverride) {
+async function update(packageName, file) {
     const session = loadSession();
     if (!session) {
         console.error('Not logged in. Run: mdstitch login');
@@ -11,8 +11,8 @@ async function update(file, nameOverride) {
 
     await supabase.auth.setSession(session);
 
-    const { name: fileName, content } = readPackageFile(file);
-    const name = nameOverride || fileName;
+    const { content } = readPackageFile(file);
+    const name = packageName;
 
     const { error } = await supabase
         .from('packages')
