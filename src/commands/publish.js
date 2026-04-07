@@ -32,11 +32,21 @@ async function publish(file) {
         },
     ]);
 
-    await supabase.auth.setSession(session);
+    const { error: sessionError } = await supabase.auth.setSession({
+        access_token: session.access_token,
+        refresh_token: session.refresh_token,
+    });
+
+    if (sessionError) {
+        console.error('Session expired. Please run: mdstitch login');
+        process.exit(1);
+    }
+
+    const { data: { user } } = await supabase.auth.getUser();
 
     const { error } = await supabase
         .from('packages')
-        .insert({ name: answers.name, content, description: answers.description, type: answers.type, owner_id: session.user.id });
+        .insert({ name: answers.name, content, description: answers.description, type: answers.type, owner_id: user.id });
 
     if (error) {
         if (error.code === '23505') {

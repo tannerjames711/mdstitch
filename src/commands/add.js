@@ -1,10 +1,10 @@
 const { supabase } = require('../../src/lib/supabase');
-const { writePackageFile } = require('./add_helpers');
+const { writePackageFolder } = require('./add_helpers');
 
 async function add(name) {
     const { data, error } = await supabase
         .from('packages')
-        .select('name, content')
+        .select('name, content, type')
         .eq('name', name)
         .single();
 
@@ -13,8 +13,18 @@ async function add(name) {
         process.exit(1);
     }
 
-    writePackageFile(data.name, data.content);
-    console.log(`Added "${data.name}.md" to current folder.`);
+    const { data: refs, error: refsError } = await supabase
+        .from('package_refs')
+        .select('filename, content')
+        .eq('package_name', name);
+
+    if (refsError) {
+        console.error(`Failed to fetch refs: ${refsError.message}`);
+        process.exit(1);
+    }
+
+    writePackageFolder(data.name, data.content, data.type, refs || []);
+    console.log(`Added "${data.name}/" to current folder.`);
 }
 
 module.exports = { add };

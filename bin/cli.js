@@ -63,6 +63,20 @@ program
   .action((name) => require('../src/commands/add').add(name));
 
 program
+  .command('addref')
+  .description('Add or update a reference file on a published package')
+  .argument('<package>', 'The package name')
+  .argument('<file>', 'The reference file to attach')
+  .action((packageName, file) => require('../src/commands/addref').addref(packageName, file));
+
+program
+  .command('removeref')
+  .description('Remove a reference file from a published package')
+  .argument('<package>', 'The package name')
+  .argument('<filename>', 'The filename to remove')
+  .action((packageName, filename) => require('../src/commands/removeref').removeref(packageName, filename));
+
+program
   .command('update')
   .description('Update a package you own')
   .argument('<file>', 'The md file to update')
